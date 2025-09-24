@@ -1,0 +1,10 @@
+Git steps (when you're ready to upload):
+
+cd libms_step1
+git init
+git add .
+git commit -m "Initial scaffold"
+# Create repo on GitHub, then:
+git remote add origin https://github.com/<youruser>/<repo>.git
+git branch -M main
+git push -u origin main

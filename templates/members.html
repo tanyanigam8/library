@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block body %}
+<h2>Members</h2>
+<a href="{{ url_for('member_add') }}" class="btn btn-sm btn-success mb-2">Add Member</a>
+<table class="table table-sm">
+  <thead><tr><th>ID</th><th>Name</th><th>Phone</th><th>Member Till</th><th>Action</th></tr></thead>
+  <tbody>
+    {% for r in rows %}
+      <tr>
+        <td>{{ r[0] }}</td>
+        <td>{{ r[1] }}</td>
+        <td>{{ r[2] }}</td>
+        <td>{{ r[3] }}</td>
+        <td>
+          <a href="{{ url_for('member_edit', id=r[0]) }}" class="btn btn-sm btn-primary">Edit</a>
+          <a href="{{ url_for('member_del', id=r[0]) }}" class="btn btn-sm btn-danger">Del</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><title>Pay Fine</title></head>
+<body>
+<h1>Pay Fine</h1>
+<form method="post">
+  <p><b>Book</b>: {{ row[2] }} | <b>Author</b>: {{ row[3] }}</p>
+  <p><b>Issue Date</b>: {{ row[4] }} | <b>Due Date</b>: {{ row[5] }}</p>
+
+  <label>Return Date</label>
+  <input type="date" name="ret_dt" value="{{ ret_dt }}" required>
+
+  <p><b>Late Days</b>: {{ late }}</p>
+
+  <label><input type="checkbox" name="paid"> Fine Paid</label>
+  <br>
+  <label>Remarks</label>
+  <input name="remarks">
+
+  <p style="margin-top:10px;">
+    <button type="submit">Finish</button>
+    <a href="{{ url_for('cancel') }}">Cancel</a>
+  </p>
+</form>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!-- templates/master_books.html -->
+<!DOCTYPE html>
+<html>
+<head><title>Master Books</title></head>
+<body>
+<h1>Master List of Books</h1>
+<a href="{{ url_for('book_add') }}">+ Add Book</a>
+<table border="1">
+<tr><th>ID</th><th>Title</th><th>Author</th><th>Type</th><th>Available</th></tr>
+{% for r in rows %}
+<tr>
+<td>{{r[0]}}</td>
+<td>{{r[1]}}</td>
+<td>{{r[2]}}</td>
+<td>{{r[3]}}</td>
+<td>{{'Yes' if r[4] else 'No'}}</td>
+</tr>
+{% endfor %}
+</table>
+</body>
+</html>

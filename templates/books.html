@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block body %}
+<h2>Books</h2>
+<a href="{{ url_for('book_add') }}" class="btn btn-sm btn-success mb-2">Add Book</a>
+<table class="table table-sm">
+  <thead><tr><th>ID</th><th>Title</th><th>Author</th><th>Avail</th><th>Action</th></tr></thead>
+  <tbody>
+    {% for r in rows %}
+      <tr>
+        <td>{{ r[0] }}</td>
+        <td>{{ r[1] }}</td>
+        <td>{{ r[2] }}</td>
+        <td>{{ 'Yes' if r[3] else 'No' }}</td>
+        <td>
+          <a href="{{ url_for('book_edit', id=r[0]) }}" class="btn btn-sm btn-primary">Edit</a>
+          <a href="{{ url_for('book_del', id=r[0]) }}" class="btn btn-sm btn-danger">Del</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

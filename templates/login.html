@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login / Sign Up</title>
+  <style>
+    label{display:block;margin:6px 0 2px}
+    .row{margin-bottom:8px}
+  </style>
+  <script>
+    function toggleMode(){
+      const mNew = document.querySelector('input[name=mode][value=new]').checked;
+      document.getElementById('newFields').style.display = mNew ? 'block' : 'none';
+      document.getElementById('roleRow').style.display = mNew ? 'block' : 'none';
+      document.getElementById('nameRow').style.display = mNew ? 'block' : 'none';
+    }
+  </script>
+</head>
+<body onload="toggleMode()">
+  <h1>Login / Sign Up</h1>
+  <form method="post">
+    <div class="row">
+      <label><input type="radio" name="mode" value="new" checked onchange="toggleMode()"> New</label>
+      <label><input type="radio" name="mode" value="existing" onchange="toggleMode()"> Existing</label>
+    </div>
+
+    <div class="row" id="nameRow">
+      <label>Name (for New)</label>
+      <input name="name">
+    </div>
+
+    <div class="row">
+      <label>Username</label>
+      <input name="user" required>
+    </div>
+
+    <div class="row">
+      <label>Password</label>
+      <input type="password" name="pw" required>
+    </div>
+
+    <div class="row" id="roleRow">
+      <label>Role</label>
+      <label><input type="radio" name="role" value="user" checked> User</label>
+      <label><input type="radio" name="role" value="admin"> Admin</label>
+    </div>
+
+    <p>
+      <button type="submit">Submit</button>
+      <a href="{{ url_for('cancel') }}">Cancel</a>
+    </p>
+  </form>
+
+  <p>
+    <!-- Quick links if you keep them in navbar -->
+    <a href="{{ url_for('login') }}">Admin login</a> |
+    <a href="{{ url_for('login_member') }}">User login</a>
+  </p>
+</body>
+</html>

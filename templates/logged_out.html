@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Logged Out</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+    a { display:inline-block; margin:10px; padding:6px 12px; border:1px solid #888; border-radius:4px; text-decoration:none; background:#f5f5f5; }
+  </style>
+</head>
+<body>
+  <h2>You have been logged out.</h2>
+  <p>Thanks for using the Library system.</p>
+  <a href="{{ url_for('login') }}">Login again</a>
+  <a href="{{ url_for('index') }}">Home</a>
+</body>
+</html>

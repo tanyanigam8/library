@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block body %}
+<h2>Issued Books</h2>
+<a href="{{ url_for('issue_add') }}" class="btn btn-sm btn-success mb-2">New Issue</a>
+<table class="table table-sm">
+  <thead><tr><th>ID</th><th>Book</th><th>Member</th><th>Issue Date</th><th>Due Date</th><th>Return Date</th><th>Action</th></tr></thead>
+  <tbody>
+    {% for r in rows %}
+      <tr>
+        <td>{{ r[0] }}</td>
+        <td>{{ r[1] }}</td>
+        <td>{{ r[2] }}</td>
+        <td>{{ r[3] }}</td>
+        <td {% if not r[5] and r[4] < today %} style="color:red;" {% endif %}>{{ r[4] }}</td>
+        <td>{{ r[5] if r[5] else '-' }}</td>
+        <td>
+          {% if not r[5] %}
+            <a href="{{ url_for('issue_ret', id=r[0]) }}" class="btn btn-sm btn-primary">Return</a>
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

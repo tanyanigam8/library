@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head><title>Issue Book</title>
+<script>
+function setAuth(){
+  const sel = document.getElementById('book');
+  const a = sel.options[sel.selectedIndex].dataset.auth || '';
+  document.getElementById('auth').value = a;
+}
+</script>
+</head>
+<body onload="setAuth()">
+<h1>Issue Book</h1>
+<form method="post">
+  <label>Book</label>
+  <select id="book" name="book" required onchange="setAuth()">
+    <option value="">-- select --</option>
+    {% for b in books %}
+      <option value="{{b[0]}}" data-auth="{{b[2]}}">{{b[1]}}</option>
+    {% endfor %}
+  </select>
+
+  <label>Author (auto)</label>
+  <input id="auth" readonly>
+
+  <label>Member</label>
+  <select name="member" required>
+    <option value="">-- select --</option>
+    {% for m in members %}
+      <option value="{{m[0]}}">{{m[1]}}</option>
+    {% endfor %}
+  </select>
+
+  <label>Issue Date</label>
+  <input type="date" name="issue_dt" value="{{ tdy }}" min="{{ tdy }}" required>
+
+  <label>Return Date (<= +15 days)</label>
+  <input type="date" name="due_dt" value="{{ due_def }}" max="{{ due_def }}" required>
+
+  <label>Remarks (optional)</label>
+  <input name="remarks">
+
+  <p style="margin-top:10px;">
+    <button type="submit">Issue</button>
+    <a href="{{ url_for('cancel') }}">Cancel</a>
+  </p>
+</form>
+</body>
+</html>

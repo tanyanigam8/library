@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Master Memberships</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    table { border-collapse: collapse; width:100%; }
+    th, td { border:1px solid #ddd; padding:8px; }
+    .btn { padding:4px 8px; border:1px solid #888; border-radius:4px; text-decoration:none; }
+  </style>
+</head>
+<body>
+  <h1>Master: Memberships</h1>
+  <p>
+    <a class="btn" href="{{ url_for('member_add') }}">+ Add Member</a>
+    &nbsp;|&nbsp;
+    <a class="btn" href="{{ url_for('master_index') }}">← Back to Master</a>
+  </p>
+  <table>
+    <tr>
+      <th>ID</th><th>Name</th><th>Phone</th><th>Email</th><th>Member Till</th><th>Actions</th>
+    </tr>
+    {% for r in rows %}
+    <tr>
+      <td>{{ r[0] }}</td>
+      <td>{{ r[1] }}</td>
+      <td>{{ r[2] }}</td>
+      <td>{{ r[3] }}</td>
+      <td>{{ r[4] }}</td>
+      <td>
+        <a class="btn" href="{{ url_for('member_edit', id=r[0]) }}">Edit</a>
+        <a class="btn" href="{{ url_for('member_del', id=r[0]) }}" onclick="return confirm('Delete this member?');">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

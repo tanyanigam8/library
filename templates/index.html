@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>Library Management - Home</h1>
+<p>Scaffold created. Use the links above to navigate. This is step 1.</p>
+
+<ul>
+  <li><a href="{{ url_for('books') }}">Books</a></li>
+  <li><a href="{{ url_for('members') }}">Members</a></li>
+  <li><a href="{{ url_for('issues') }}">Issues</a></li>
+  <li><a href="{{ url_for('master_index') }}">Master Pages</a></li>
+  <li><a href="{{ url_for('book_available') }}">Available Books</a></li>
+  <li><a href="{{ url_for('book_search') }}">Search Books</a></li>
+</ul>
+{% endblock %}

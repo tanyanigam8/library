@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>Return Book</title></head>
+<body>
+<h1>Return Book</h1>
+<form method="post">
+  <p><b>Serial No</b>: {{ row[1] }}</p>
+  <p><b>Book</b>: {{ row[2] }}</p>
+  <p><b>Author</b>: {{ row[3] }}</p>
+  <p><b>Issue Date</b>: {{ row[4] }}</p>
+  <p><b>Due Date</b>: {{ row[5] }}</p>
+
+  <label>Return Date</label>
+  <input type="date" name="ret_dt" value="{{ ret_def }}" required>
+
+  <p style="margin-top:10px;">
+    <button type="submit">Confirm</button>
+    <a href="{{ url_for('cancel') }}">Cancel</a>
+  </p>
+</form>
+</body>
+</html>

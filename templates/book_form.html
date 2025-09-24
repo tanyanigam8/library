@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head><title>{{ action }} Book</title>
+<style>label{display:block;margin:6px 0 2px}input,select{padding:6px;width:280px}</style>
+</head>
+<body>
+<h1>{{ action }} Book</h1>
+<form method="post">
+  <label>Type</label>
+  {% set typ = (row[4] if row else 'book') %}
+  <label><input type="radio" name="typ" value="book" {{ 'checked' if typ=='book' else '' }}> Book</label>
+  <label><input type="radio" name="typ" value="movie" {{ 'checked' if typ=='movie' else '' }}> Movie</label>
+
+  <label>Title</label>
+  <input name="title" required value="{{ row[1] if row else '' }}">
+
+  <label>{{ 'Author / Director' }}</label>
+  <input name="author" required value="{{ row[2] if row else '' }}">
+
+  <label>{{ 'Publisher / Year' }}</label>
+  <input name="pub" required value="{{ row[3] if row else '' }}">
+
+  <p style="margin-top:10px;">
+    <button type="submit">{{ action }}</button>
+    <a href="{{ url_for('cancel') }}">Cancel</a>
+  </p>
+</form>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><title>Reports</title></head>
+<body>
+<h1>Reports</h1>
+<ul>
+  <li><a href="{{ url_for('issues_active') }}">Active Issues</a></li>
+  <li><a href="{{ url_for('issues_overdue') }}">Overdue Returns</a></li>
+  <li><a href="{{ url_for('master_memberships') }}">Master list of Memberships</a></li>
+  <li><a href="{{ url_for('master_movies') }}">Master list of Movies</a></li>
+  <li><a href="{{ url_for('master_books') }}">Master list of Books</a></li>
+  <li><a href="{{ url_for('requests') }}">Pending Issues Request</a></li>
+</ul>
+<p><a href="{{ url_for('index') }}">Home</a></p>
+</body>
+</html>

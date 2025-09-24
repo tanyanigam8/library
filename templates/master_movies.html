@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Master Movies</title>
+  <style>
+    table { border-collapse: collapse; }
+    th, td { border:1px solid #ccc; padding:8px; }
+    a.btn { padding:4px 8px; border:1px solid #888; border-radius:4px; text-decoration:none; }
+  </style>
+</head>
+<body>
+  <h1>Master: Movies</h1>
+  <p>
+    <a class="btn" href="{{ url_for('movie_add') }}">+ Add Movie</a>
+    &nbsp;|&nbsp;
+    <a class="btn" href="{{ url_for('master_index') }}">← Back to Master</a>
+  </p>
+  <table>
+    <tr>
+      <th>ID</th><th>Title</th><th>Director</th><th>Year</th><th>Avail</th><th>Actions</th>
+    </tr>
+    {% for r in rows %}
+    <tr>
+      <td>{{ r[0] }}</td>
+      <td>{{ r[1] }}</td>
+      <td>{{ r[2] }}</td>
+      <td>{{ r[3] }}</td>
+      <td>{{ r[4] }}</td>
+      <td>
+        <a class="btn" href="{{ url_for('movie_edit', id=r[0]) }}">Edit</a>
+        <a class="btn" href="{{ url_for('movie_del', id=r[0]) }}" onclick="return confirm('Delete this movie?');">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

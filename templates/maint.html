@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Maintenance</title>
+<style>table{border-collapse:collapse}th,td{border:1px solid #ccc;padding:6px}a.btn{border:1px solid #888;padding:4px 8px;border-radius:4px;text-decoration:none}</style>
+</head>
+<body>
+<h1>Maintenance</h1>
+<p><a class="btn" href="{{ url_for('maint_add') }}">+ Add Note</a></p>
+<table>
+  <tr><th>ID</th><th>Title</th><th>Date</th><th>Details</th></tr>
+  {% for r in rows %}
+  <tr>
+    <td>{{r[0]}}</td><td>{{r[1]}}</td><td>{{r[2]}}</td><td>{{r[3]}}</td>
+  </tr>
+  {% endfor %}
+</table>
+<p><a href="{{ url_for('master_index') }}">Back</a></p>
+</body>
+</html>

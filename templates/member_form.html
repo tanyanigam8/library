@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head><title>{{ action }} Membership</title></head>
+<body>
+<h1>{{ action }} Membership</h1>
+
+{% if action == 'Add' %}
+<form method="post">
+  <label>Name</label><input name="name" required>
+  <label>Phone</label><input name="phone" required>
+  <label>Email</label><input name="email" required>
+  <p><b>Plan</b></p>
+  <label><input type="radio" name="plan" value="6m" checked> 6 months</label>
+  <label><input type="radio" name="plan" value="1y"> 1 year</label>
+  <label><input type="radio" name="plan" value="2y"> 2 years</label>
+  <p style="margin-top:10px;"><button type="submit">Save</button> <a href="{{ url_for('cancel') }}">Cancel</a></p>
+</form>
+{% else %}
+<form method="post">
+  <p><b>ID</b>: {{ row[0] }}</p>
+  <p><b>Name</b>: {{ row[1] }}</p>
+  <p><b>Phone</b>: {{ row[2] }}</p>
+  <p><b>Email</b>: {{ row[3] }}</p>
+  <p><b>Current Till</b>: {{ row[4] }}</p>
+
+  <p><b>Extend by</b></p>
+  <label><input type="radio" name="extend" value="6m" checked> 6 months</label>
+  <label><input type="radio" name="extend" value="1y"> 1 year</label>
+  <label><input type="radio" name="extend" value="2y"> 2 years</label>
+
+  <p><label><input type="checkbox" name="cancel"> Cancel membership</label></p>
+
+  <p style="margin-top:10px;"><button type="submit">Update</button> <a href="{{ url_for('cancel') }}">Cancel</a></p>
+</form>
+{% endif %}
+</body>
+</html>
